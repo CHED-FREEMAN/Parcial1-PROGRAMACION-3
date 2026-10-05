@@ -1,0 +1,112 @@
+Debo realizar el diagrama de clases para una pequeña app de una tienda de artículos deportivos, básicamente necesito idear todas las clases que se usarían en esa app, donde no sean muchas clases, solo las esenciales para que la app tenga dos objetos como por ejemplo, un usuario y un producto y que se los muestre realmente en pantalla, pero eso no lo hagas, solo dame la lógica de un diagrama de clases no tan grande y extenso relacionado a una tienda de artículos deportivos, junto a los atributos y funciones que tendrían le di este prompt a Gemini y me dio esto: Para una tienda de artículos deportivos con un diseño compacto y funcional, se pueden modelar 4 clases esenciales que cubren desde el catálogo hasta el proceso de compra.
+
+Estructura de Clases, Atributos y Métodos
+Usuario
+Representa al cliente que navega y compra en la aplicación.
+
+Atributos:
+
+idUsuario: int
+
+nombre: String
+
+email: String
+
+contrasena: String
+
+direccionEnvio: String
+
+Métodos:
+
+iniciarSesion(): boolean
+
+cerrarSesion(): void
+
+actualizarPerfil(): void
+
+Producto
+Representa cualquier artículo deportivo a la venta (calzado, indumentaria, accesorios, balones).
+
+Atributos:
+
+idProducto: int
+
+nombre: String
+
+deporte: String (ej. Fútbol, Running, Tenis)
+
+marca: String
+
+precio: double
+
+stock: int
+
+talla: String
+
+Métodos:
+
+obtenerDetalles(): String
+
+verificarDisponibilidad(cantidad: int): boolean
+
+actualizarStock(cantidad: int): void
+
+CarritoDeCompras
+Sirve como contenedor temporal de los productos seleccionados antes de confirmar el pago.
+
+Atributos:
+
+idCarrito: int
+
+productos: List
+
+montoTotal: double
+
+Métodos:
+
+agregarProducto(producto: Producto, cantidad: int): void
+
+eliminarProducto(producto: Producto): void
+
+calcularTotal(): double
+
+vaciarCarrito(): void
+
+Pedido
+Registra la transacción formal realizada por el usuario tras procesar la orden.
+
+Atributos:
+
+idPedido: int
+
+fecha: Date
+
+estado: String (ej. "Pendiente", "Enviado", "Entregado")
+
+montoTotal: double
+
+Métodos:
+
+confirmarPago(): boolean
+
+actualizarEstado(nuevoEstado: String): void
+
+generarComprobante(): String
+
+Lógica de Relaciones y Cardinalidades
+
+Usuario — CarritoDeCompras (1 a 1): Un Usuario posee un único CarritoDeCompras activo en la sesión.
+
+Usuario — Pedido (1 a N): Un Usuario puede realizar de 0 a muchos Pedidos a lo largo del tiempo.
+
+CarritoDeCompras — Producto (N a N): Un CarritoDeCompras contiene de 0 a varios Productos, y un mismo Producto puede estar en los carritos de varios usuarios.
+
+Pedido — Producto (N a N): Un Pedido registrado incluye de 1 a varios Productos solicitados.
+
+Flujo Operativo del Diagrama
+
+El Usuario examina el catálogo de la app y consulta los datos del Producto (talla, deporte, disponibilidad).
+
+Al seleccionar un Producto, este se añade a la lista dentro de CarritoDeCompras, el cual ejecuta calcularTotal().
+
+Al procesar el pago, el contenido del CarritoDeCompras genera una instancia de Pedido y invoca actualizarStock() en Producto para descontar las unidades vendidas. Ponele que está bien, la app que debo realizar debe ser pequeña y con Jetpack Compose en Android Studio, pero necesito que crees el diagrama de clases para que lo pueda descargar luego como un pdf, solo crea las clases que ya están ahí, en producto cámbiale lo de talla por descripción ya que creo que no todo producto tendría una talla, y también quita lo de las relaciones y cardinalidades porque no quisiera tenerlas en mi diagrama de clases, además, si quieres añade alguna clase que crees ver necesaria como publicación o algo así, aunque no sé si sea necesaria ya que ponele que lo que hay que hacer en la app de android studio no es tener algo funcional, sino unas dos interfaces donde se listen al menos dos objetos implementados, ya sea de usuario, producto o algo así, pero eso ya vemos después, solo crea el diagrama por favor. Espera, lo de realizar el diagrama, solo coloca las relaciones, tipo, las flechas que los conectan, pero no lo de uno a muchos, uno a uno y tal, y haz el diagrama tipo jerárquico como el pdf que te pasé, solo tómalo como ejemplo pero realízalo así
