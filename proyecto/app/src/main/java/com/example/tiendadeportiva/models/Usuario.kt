@@ -7,7 +7,9 @@ class Usuario (
     var contraseña: String,
     var direccionEnvio: String
 ) {
-    fun iniciarSesion(): Boolean {}
+    fun iniciarSesion(): Boolean {
+        return true
+    }
     fun cerrarSesion(): Unit {}
     fun actualizarPerfil(): Unit {}
 }
